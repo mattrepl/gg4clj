@@ -78,7 +78,7 @@
   "Execute a file of R code in a new R session. No output will be returned. If the R process exits abnormally, then the
   error output will be printed to the console."
   [script-path]
-  (let [return-val (shell/sh "Rscript" "--vanilla" script-path)]
+  (let [return-val (shell/sh "Rscript" script-path)]
     ;; rscript is quite chatty, so only pass on err text if exit was abnormal
     (when (not= 0 (:exit return-val))
       (println (:err return-val)))))
